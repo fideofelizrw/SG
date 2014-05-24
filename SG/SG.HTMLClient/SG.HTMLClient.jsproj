@@ -82,9 +82,6 @@
     <Content Include="Scripts\winjs-1.0.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Screens\" />
-  </ItemGroup>
-  <ItemGroup>
     <ServiceMetadataReference Include="..\SG.Server\SG.Server.vbproj">
       <Visible>false</Visible>
     </ServiceMetadataReference>
@@ -94,6 +91,7 @@
       <ProjectCritical>true</ProjectCritical>
     </LightSwitchModel>
     <LightSwitchModel Include="Properties\Proxies.lsml" />
+    <LightSwitchModel Include="Screens\Inicio.lsml" />
   </ItemGroup>
   <ItemGroup>
     <_ClientBuildFile Include="GeneratedArtifacts\model.json">
