@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="Clientes">
+    Name="Entradas">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -27,93 +27,28 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="RazonSocial"
-        PropertyType=":String">
+        Name="FechaEntrada"
+        PropertyType=":Date">
         <EntityProperty.Attributes>
           <Required />
-          <MaxLength
-            Value="255" />
+          <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="Clientes"
+        Association="Entradas_Clientes"
+        FromEnd="Entradas"
+        ToEnd="Clientes" />
+      <NavigationProperty
+        Name="Dependientes"
+        Association="Entradas_Dependientes"
+        FromEnd="Entradas"
+        ToEnd="Dependientes" />
       <EntityProperty
-        Name="NombreFantasia"
-        PropertyType=":String">
+        Name="TotalEntrada"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money">
         <EntityProperty.Attributes>
           <Required />
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Domicilio"
-        PropertyType=":String">
-        <EntityProperty.Attributes>
-          <Required />
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="CDPostal"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Telefono1"
-        PropertyType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Telefono2"
-        PropertyType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Fax"
-        PropertyType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Email"
-        PropertyType="Microsoft.LightSwitch.Extensions:EmailAddress?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="CUIT"
-        PropertyType=":String">
-        <EntityProperty.Attributes>
-          <Required />
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="IIBB"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="RiesgoMax"
-        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
-        <EntityProperty.Attributes>
           <NotSearchable />
           <DecimalConstraint
             Precision="18"
@@ -121,17 +56,7 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="RiesgoActual"
-        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
-        <EntityProperty.Attributes>
-          <NotSearchable />
-          <DecimalConstraint
-            Precision="18"
-            Scale="2" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="BonifEspecial"
+        Name="Bonificacion"
         PropertyType="Microsoft.LightSwitch.Extensions:Percent?">
         <EntityProperty.Attributes>
           <NotSearchable />
@@ -141,39 +66,85 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="ListaPrecios"
-        PropertyType=":Int32">
+        Name="Recargo"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
         <EntityProperty.Attributes>
           <NotSearchable />
-          <Required />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="BcoSucursal"
-        PropertyType=":String?">
+        Name="Alicuota1"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
         <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="BcoNumCuenta"
-        PropertyType=":String?">
+        Name="Alicuota2"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
         <EntityProperty.Attributes>
-          <MaxLength
-            Value="255" />
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
         </EntityProperty.Attributes>
       </EntityProperty>
-      <NavigationProperty
-        Name="PedidosCollection"
-        Association="Pedidos_Clientes"
-        FromEnd="Clientes"
-        ToEnd="Pedidos" />
-      <NavigationProperty
-        Name="EntradasCollection"
-        Association="Entradas_Clientes"
-        FromEnd="Clientes"
-        ToEnd="Entradas" />
+      <EntityProperty
+        Name="Total"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ImpInt"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="OperExentas"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Alicuota3"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="PercepPorLey"
+        PropertyType="Microsoft.LightSwitch.Extensions:Money?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <DecimalConstraint
+            Precision="18"
+            Scale="2" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -232,14 +203,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="ClientesSet"
+      Name="EntradasSet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="Clientes" />
+      EntityType="Entradas" />
     <QueryOperation
-      Name="ClientesSet_Single"
-      ReturnType="Clientes">
+      Name="EntradasSet_Single"
+      ReturnType="Entradas">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -265,7 +236,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="ClientesSet" />
+            Member="EntradasSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -278,8 +249,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="ClientesSet_SingleOrDefault"
-      ReturnType="Clientes">
+      Name="EntradasSet_SingleOrDefault"
+      ReturnType="Entradas">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -305,7 +276,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="ClientesSet" />
+            Member="EntradasSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -317,105 +288,24 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
-    <AssociationSet
-      Name="Pedidos_ClientesSet"
-      Association="Pedidos_Clientes">
-      <AssociationSetEnd
-        Name="Pedidos"
-        EntitySet="PedidosSet" />
-      <AssociationSetEnd
-        Name="Clientes"
-        EntitySet="ClientesSet" />
-    </AssociationSet>
-    <AssociationSet
-      Name="Entradas_ClientesSet"
-      Association="Entradas_Clientes">
-      <AssociationSetEnd
-        Name="Entradas"
-        EntitySet="EntradasSet" />
-      <AssociationSetEnd
-        Name="Clientes"
-        EntitySet="ClientesSet" />
-    </AssociationSet>
   </EntityContainer>
-  <Association
-    Name="Pedidos_Clientes">
-    <AssociationEnd
-      Name="Pedidos"
-      Multiplicity="Many"
-      EntityType="Pedidos" />
-    <AssociationEnd
-      Name="Clientes"
-      Multiplicity="One"
-      EntityType="Clientes">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
   <DataService
     Name="ApplicationDataMapping">
     <DataService.Attributes>
       <Partial />
     </DataService.Attributes>
-    <AssociationSetMapping
-      AssociationSet="Pedidos_ClientesSet">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="Pedidos_ClientesSet" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[Pedidos_ClientesSet]/Members[Pedidos]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Pedidos_Clientes" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[Pedidos_ClientesSet]/Members[Clientes]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
-    <AssociationSetMapping
-      AssociationSet="Entradas_ClientesSet">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="Entradas_ClientesSet" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[Entradas_ClientesSet]/Members[Entradas]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Entradas_Clientes" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[Entradas_ClientesSet]/Members[Clientes]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="EntradasSet">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="Entradas_Dependientes"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="Entradas_Clientes"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
   </DataService>
-  <Association
-    Name="Entradas_Clientes">
-    <AssociationEnd
-      Name="Entradas"
-      Multiplicity="Many"
-      EntityType="Entradas" />
-    <AssociationEnd
-      Name="Clientes"
-      Multiplicity="One"
-      EntityType="Clientes">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
 </ServiceApplication>

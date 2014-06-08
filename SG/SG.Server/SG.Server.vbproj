@@ -219,6 +219,11 @@
   </ItemGroup>
   <ItemGroup>
     <LightSwitchModel Include="DataSources\ApplicationData\ClientesSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\ArticulosSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\PedidosSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\DTPedidosSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\DependientesSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\EntradasSet.lsml" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
